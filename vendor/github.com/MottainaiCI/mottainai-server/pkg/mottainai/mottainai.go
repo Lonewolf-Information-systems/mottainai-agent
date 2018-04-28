@@ -146,7 +146,7 @@ func (m *Mottainai) SendTask(docID int) (bool, error) {
 
 		d.UpdateTask(docID, map[string]interface{}{"status": "waiting", "result": "none"})
 
-		fmt.Printf("Task Source: %v, Script: %v, Yaml: %v, Directory: %v, TaskName: %v", task.Source, task.Script, task.Yaml, task.Directory, task.TaskName)
+		fmt.Printf("Task Source: %v, Script: %v, Directory: %v, TaskName: %v", task.Source, task.Script, task.Directory, task.TaskName)
 		th := agenttasks.DefaultTaskHandler()
 
 		_, err = th.SendTask(server, task.TaskName, docID)
@@ -164,7 +164,9 @@ func (m *Mottainai) LoadPlans() {
 
 		for _, plan := range d.AllPlans() {
 			fmt.Println("Loading plan: ", plan.Task, plan)
+			id := plan.ID
 			c.AddFunc(plan.Planned, func() {
+				plan, _ := d.GetPlan(id)
 				plan.Task.Reset()
 				docID, _ := d.CreateTask(plan.Task.ToMap())
 				m.SendTask(docID)
