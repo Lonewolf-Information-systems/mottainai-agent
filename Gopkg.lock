@@ -43,7 +43,7 @@
     "pkg/tasks",
     "pkg/utils"
   ]
-  revision = "7bc8694071df94c61f721b8dbd68a8baa0609554"
+  revision = "cbe1ae717a52250bc388ef70ce5e4fe9e14759f5"
 
 [[projects]]
   branch = "master"
