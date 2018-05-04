@@ -1,0 +1,10 @@
+8c8
+< BUILD_PLATFORMS ?= -osarch="linux/amd64" -osarch="linux/386" -osarch="linux/arm"
+---
+> BUILD_PLATFORMS ?= -osarch="linux/amd64" -osarch="linux/386" -osarch="linux/arm" -osarch="linux/arm64"
+44c44
+< 	make build BUILD_PLATFORMS="-os=linux -arch=amd64"
+\ No newline at end of file
+---
+> 	make build BUILD_PLATFORMS="-os=linux -arch=arm"
+\ No newline at end of file
